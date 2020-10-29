@@ -72,22 +72,48 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/questions'
+GET '/categories/category_id/questions'
+POST '/questions'
+POST '/categories'
+POST '/search_questions'
+DELETE '/quizzes'
 
 GET '/categories'
-- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+- Fetches a list of categories
 - Request Arguments: None
-- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
-{'1' : "Science",
-'2' : "Art",
-'3' : "Geography",
-'4' : "History",
-'5' : "Entertainment",
-'6' : "Sports"}
+- Returns: A list of categories (in which contains all types of categories as string type) and total of categories
+["Science", "Art", "Geography", "History", "Entertainment"]
 
-```
+GET '/questions'
+- Fetches a paginated list of objects of type questions
+- Request Arguments: page
+- Returns:  A list of questions of type question (in which the question object contain question id, answer, category and difficulty), total of questions, current category and list of category types (in which contains all types of categories as string type)
+[]
+
+GET '/categories/category_id/questions'
+- Fetches a paginated list of objects of type question by category id 
+- Request Arguments: None
+- Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty) and current category type in string type
+[]
+
+POST '/questions'
+- Creats a question
+- Request Arguments: question, answer, category, difficulty
+- Returns: the created object of type question. 
+{}
+
+POST '/search_questions'
+- Fetches a list of questions based on a search term
+- Request Arguments: searchTerm
+- Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty).
+[]
+
+POST '/quizzes'
+- Fetches a question in which dose not equal to previous question and have the spicified category
+- Request Arguments: previous_question, quiz_category
+- Returns: An object of type question (in which the object contain question id, answer, category and difficulty). 
+{}
 
 
 ## Testing
