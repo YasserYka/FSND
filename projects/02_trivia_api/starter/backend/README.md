@@ -89,32 +89,48 @@ GET '/questions'
 - Fetches a paginated list of objects of type questions
 - Request Arguments: page
 - Returns:  A list of questions of type question (in which the question object contain question id, answer, category and difficulty), total of questions, current category and list of category types (in which contains all types of categories as string type)
-[]
+{
+    categories: ["Science", "Art", "Geography", "History", "Entertainment", "Sports"],
+    current_category: ["Science", "Art", "Geography", "History", "Entertainment", "Sports"],
+    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…],
+    total_questions: 35,
+}
 
 GET '/categories/category_id/questions'
 - Fetches a paginated list of objects of type question by category id 
 - Request Arguments: None
 - Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty) and current category type in string type
-[]
+{
+    current_category: "History"
+    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…]
+    success: true
+}
 
 POST '/questions'
 - Creats a question
 - Request Arguments: question, answer, category, difficulty
 - Returns: the created object of type question. 
-{}
+{
+    question: {answer: "2", category: 1, difficulty: 1, id: 47, question: "question"}
+}
 
 POST '/search_questions'
 - Fetches a list of questions based on a search term
 - Request Arguments: searchTerm
 - Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty).
-[]
+{
+    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…]
+}
 
 POST '/quizzes'
 - Fetches a question in which dose not equal to previous question and have the spicified category
 - Request Arguments: previous_question, quiz_category
 - Returns: An object of type question (in which the object contain question id, answer, category and difficulty). 
-{}
+{
+    question: {answer: "The Liver", category: 1, difficulty: 4, id: 20,…}
+}
 
+```
 
 ## Testing
 To run the tests, run

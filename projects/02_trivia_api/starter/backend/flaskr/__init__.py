@@ -200,13 +200,16 @@ def create_app(test_config=None):
 
         body = request.get_json()
 
-        searchTerm = body.get("searchTerm", None)
+        search_term = body.get("searchTerm", None)
 
-        if not searchTerm:
+
+        print('tttffff')
+        print(search_term)
+        if not search_term:
             abort(422)
 
         questions = Question.query.filter(
-            Question.question.ilike(f"%{searchTerm}%")
+            Question.question.ilike(f"%{search_term}%")
         ).all()
 
         questions = [question.format() for question in questions]

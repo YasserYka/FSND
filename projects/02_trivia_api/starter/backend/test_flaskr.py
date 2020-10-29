@@ -40,6 +40,7 @@ class TriviaTestCase(unittest.TestCase):
     def test_get_questions(self):
         res = self.client().get("/questions")
         data = json.loads(res.data)
+        
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)
         self.assertTrue(data["total_questions"])
