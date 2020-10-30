@@ -75,9 +75,10 @@ GET '/categories'
 GET '/questions'
 GET '/categories/category_id/questions'
 POST '/questions'
+POST '/quizzes'
 POST '/categories'
 POST '/search_questions'
-DELETE '/quizzes'
+DELETE '/questions/questions_id'
 
 GET '/categories'
 - Fetches a list of categories
@@ -94,6 +95,7 @@ GET '/questions'
     current_category: ["Science", "Art", "Geography", "History", "Entertainment", "Sports"],
     questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…],
     total_questions: 35,
+    success: True
 }
 
 GET '/categories/category_id/questions'
@@ -101,9 +103,18 @@ GET '/categories/category_id/questions'
 - Request Arguments: None
 - Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty) and current category type in string type
 {
-    current_category: "History"
-    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…]
-    success: true
+    current_category: "History",
+    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…],
+    success: True
+}
+
+DELETE '/questions/questions_id'
+- Delete a question by question id 
+- Request Arguments: question_id
+- Returns: the id of the deleted question
+{
+    deleted: 4,
+    success: True
 }
 
 POST '/questions'
@@ -111,7 +122,8 @@ POST '/questions'
 - Request Arguments: question, answer, category, difficulty
 - Returns: the created object of type question. 
 {
-    question: {answer: "2", category: 1, difficulty: 1, id: 47, question: "question"}
+    question: {answer: "2", category: 1, difficulty: 1, id: 47, question: "question"},
+    success: True
 }
 
 POST '/search_questions'
@@ -119,7 +131,8 @@ POST '/search_questions'
 - Request Arguments: searchTerm
 - Returns: A list of questions of type question (in which the question object contain question id, answer, category and difficulty).
 {
-    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…]
+    questions: [{answer: "Maya Angelou", category: 4, difficulty: 2, id: 5,…},…],
+    success: True
 }
 
 POST '/quizzes'
@@ -127,7 +140,8 @@ POST '/quizzes'
 - Request Arguments: previous_question, quiz_category
 - Returns: An object of type question (in which the object contain question id, answer, category and difficulty). 
 {
-    question: {answer: "The Liver", category: 1, difficulty: 4, id: 20,…}
+    question: {answer: "The Liver", category: 1, difficulty: 4, id: 20,…},
+    success: True
 }
 
 ```

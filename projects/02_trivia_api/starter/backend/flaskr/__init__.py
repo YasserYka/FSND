@@ -143,14 +143,11 @@ def create_app(test_config=None):
         try:
             question = Question.query.filter(Question.id == question_id).one_or_none()
 
-            if question is None:
-                abort(404)
-
             question.delete()
 
             return jsonify({"success": True, "deleted": question_id})
         except:
-            abort(422)
+            abort(404)
 
     """
   @DONE: 
@@ -175,6 +172,8 @@ def create_app(test_config=None):
 
         if not question or not answer or not category or not difficulty:
             abort(422)
+
+        category = category + 1
 
         question = Question(
             question=question, answer=answer, category=category, difficulty=difficulty
@@ -202,9 +201,6 @@ def create_app(test_config=None):
 
         search_term = body.get("searchTerm", None)
 
-
-        print('tttffff')
-        print(search_term)
         if not search_term:
             abort(422)
 
