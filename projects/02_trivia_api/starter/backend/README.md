@@ -144,6 +144,26 @@ POST '/quizzes'
     success: True
 }
 
+Error handlers
+
+Not found 404
+- This error is showen when a resource can't be found
+- Returns: error code and a message 
+{
+    sucess: False,
+    error: 404,
+    message: "Not found"
+}
+
+Not found 404
+- This error is showen when there is a missing field or vaildation failed
+- Returns: error code and a message 
+{
+    sucess: False,
+    error: 422,
+    message: "Unprocessable"
+}
+
 ```
 
 ## Testing

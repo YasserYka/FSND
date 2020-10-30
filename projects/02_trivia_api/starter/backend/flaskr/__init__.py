@@ -170,10 +170,10 @@ def create_app(test_config=None):
         category = body.get("category", None)
         difficulty = body.get("difficulty", None)
 
-        if not question or not answer or not category or not difficulty:
+        if question is None or answer is None or category is None or difficulty is None:
             abort(422)
 
-        category = category + 1
+        category = int(category) + 1
 
         question = Question(
             question=question, answer=answer, category=category, difficulty=difficulty
@@ -224,7 +224,7 @@ def create_app(test_config=None):
     @app.route("/categories/<int:category_id>/questions", methods=["GET"])
     def get_questions_by_category(category_id):
 
-        category_id = 1 + category_id
+        category_id = 1 + int(category_id)
         category = Category.query.filter(Category.id == category_id).one_or_none()
 
         if category is None:
