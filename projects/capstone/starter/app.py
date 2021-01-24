@@ -130,15 +130,11 @@ def create_app(test_config=None):
         return (jsonify({'success': False, 'error': 404,
                 'message': 'Resource not found'}), 404)
 
-    @app.errorhandler(401)
-    def unauthorized(error):
-        return (jsonify({'success': False, 'error': 401,
-                'message': 'Not Authorized'}), 401)
-
-    @app.errorhandler(403)
-    def unauthorized(error):
-        return (jsonify({'success': False, 'error': 403,
-                'message': 'Forbidden'}), 403)
+    @app.errorhandler(AuthError)
+    def handle_auth_error(ex):
+        response = jsonify(ex.error)
+        response.status_code = ex.status_code
+        return response
     
     return app
 
