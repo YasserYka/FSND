@@ -51,6 +51,7 @@ GET '/cars'
 - Fetches a list of categories
 - Request Arguments: None
 - Returns: A list of cars (n which the car object contain car id, color and release) and total of categories
+```
 {
     "cars": [
         {
@@ -61,10 +62,12 @@ GET '/cars'
     ],
     "success": true
 }
+```
 
 GET '/persons'
 - Fetches a list of objects of type person
 - Returns:  A list of persons of type person (in which the person object contain person id, name, cars and age)
+```
 {
     "persons": [
         {
@@ -75,11 +78,13 @@ GET '/persons'
     ],
     "success": true
 }
+```
 
 POST '/cars'
 - Creats a car
 - Request Arguments: color, release
 - Returns: objects of type car. 
+```
 {
     "cars": [
         {
@@ -90,11 +95,13 @@ POST '/cars'
     ],
     "success": true
 }
+```
 
 POST '/persons'
 - Creats a person
 - Request Arguments: name, age
 - Returns: objects of type person. 
+```
 {
     "persons": [
         {
@@ -105,11 +112,13 @@ POST '/persons'
     ],
     "success": true
 }
+```
 
 PATCH '/persons'
 - Updates a person
 - Request Arguments: name, age
 - Returns: objects of type persons. 
+```
 {
     "persons": [
         {
@@ -120,42 +129,49 @@ PATCH '/persons'
     ],
     "success": true
 }
+```
 
 DELETE '/persons'
 - Delets a person
 - Request Arguments: person id
 - Returns: deleted person id.
+```
 {
     "deleted": 2,
     "success": true
 }
+```
 
 Error handlers
 
 Unprocessable 422
 - Retuned when request can't be processed
 - Returns: error code and a message 
+```
 {
     sucess: False,
     error: 422,
     message: "unprocessable"
 }
+```
 
 Not found 404
 - This error is showen when a resource can't be found
 - Returns: error code and a message 
+```
 {
     sucess: False,
     error: 404,
     message: "Not found"
 }
+```
 
 auth error 400|403|401
 - When issue is related to authentication and access token
 - Returns: error code and a message 
 
 400
-
+```
 {
     code: 'invalid_claims',
     description: 'Permissions not included in JWT.'
@@ -168,16 +184,18 @@ auth error 400|403|401
     code: 'invalid_header',
     description: 'Unable to find the appropriate key.'
 }
+```
 
 403
-
+```
 {
     code: 'unauthorized',
     description: 'Permission not found.'
 }
+```
 
 401
-
+```
 {
     code: 'invalid_header',
     description: 'Authorization malformed.'
@@ -186,4 +204,4 @@ auth error 400|403|401
     code: 'invalid_claims',
     description: 'Incorrect claims. Please, check the audience and issuer.'
 }
-
+```
