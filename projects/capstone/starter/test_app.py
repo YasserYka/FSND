@@ -38,7 +38,7 @@ class TriviaTestCase(unittest.TestCase):
             'age': 18,
         })
 
-        res = self.client().get("/persons")
+        res = self.client().get("/persons", headers={'Authorization': MANAGER_TOKEN})
 
         data = json.loads(res.data)
 
@@ -69,7 +69,7 @@ class TriviaTestCase(unittest.TestCase):
             'person_name': 'Yasser'
         })
 
-        res = self.client().get("/cars")
+        res = self.client().get("/cars", headers={'Authorization': MANAGER_TOKEN})
 
         data = json.loads(res.data)
 
