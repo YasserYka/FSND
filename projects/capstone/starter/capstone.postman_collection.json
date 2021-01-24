@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "84e826d8-cdee-4e02-ae31-9ed71c6923e7",
+		"name": "capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Yasser1\",\n    \"age\": 24\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/persons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/persons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cars",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"color\": \"red\",\n    \"release\": 2021,\n    \"person_name\": \"Yasser\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Yasser1\",\n    \"age\": 24\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oauth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \t\"client_id\":\"hjtdVQYQID8tyy9Z5CPDTPqrYptDvEZm\",\r\n        \t\"client_secret\": \"Tt9vYXo9Li9LS5q21n0yF_V5GsJ68QBLXgH_cPZZN8iXA_3n6Qd9yEQJRvJYZTqH\",\r\n        \t\"audience\": \"capstone\",\r\n        \t\"grant_type\": \"password\",\r\n            \"username\": \"manager@gmail.com\",\r\n            \"password\": \"Manager#123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://devhardcoding.us.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"devhardcoding",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNJTFd6YkFzbTQySHdSaFo4ek0zSCJ9.eyJpc3MiOiJodHRwczovL2RldmhhcmRjb2RpbmcudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwMGM5NTFiZGY3YjVhMDA3MThkOThmNCIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjExNDM5MTU0LCJleHAiOjE2MTE0NDYzNTQsImF6cCI6ImhqdGRWUVlRSUQ4dHl5OVo1Q1BEVFBxcllwdER2RVptIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpjYXJzIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDpjYXJzIiwicG9zdDpwZXJzb25zIl19.I_7tpu3XS8GjBtNUbRksmbwcsxanwXO7yxBS8qtuO4HBLlrLLtx0AG_OFDrlyGdQFnb8_94T0Tu9HXaCBup-k9r6WRD95QHwCKz-yNofZkMReVz9rFa9qAvZ43Q4KRJM8jJMIn3EXv9THpIHhcLDhAdgTtVa3BwVhIgEOQi2BjzYkNeIqa78dikYfXmuuy1ClssCrhhWnMJCGT5tnivf-8iDaNAm0USYoGtuTjwHTVuiTMqdZCoMk7ePTV6iKAczXHrexpfRm771HfEiXoNhO0U-z-quS5K7Q9pViwf8DMONxNk4p2qt1S73LP9k9HOUcD0FnhMDC6GQXa9AkeT9sg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "helpdesk",
+			"item": [
+				{
+					"name": "cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Yasser1\",\n    \"age\": 24\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/persons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/persons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cars",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"color\": \"red\",\n    \"release\": 2021,\n    \"person_name\": \"Yasser\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persons",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "oauth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \t\"client_id\":\"hjtdVQYQID8tyy9Z5CPDTPqrYptDvEZm\",\r\n        \t\"client_secret\": \"Tt9vYXo9Li9LS5q21n0yF_V5GsJ68QBLXgH_cPZZN8iXA_3n6Qd9yEQJRvJYZTqH\",\r\n        \t\"audience\": \"capstone\",\r\n        \t\"grant_type\": \"password\",\r\n            \"username\": \"manager@gmail.com\",\r\n            \"password\": \"Manager#123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://devhardcoding.us.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"devhardcoding",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNJTFd6YkFzbTQySHdSaFo4ek0zSCJ9.eyJpc3MiOiJodHRwczovL2RldmhhcmRjb2RpbmcudXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDYwMGM5NjBkMzQwMjg1MDA3MTYwMzdjNCIsImF1ZCI6ImNhcHN0b25lIiwiaWF0IjoxNjExNDM5OTk3LCJleHAiOjE2MTE0NDcxOTcsImF6cCI6ImhqdGRWUVlRSUQ4dHl5OVo1Q1BEVFBxcllwdER2RVptIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6Y2FycyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyJdfQ.tYoQ1vdGSjrusV7up_nxP03rK1XFBf_rlRnA-qfctqiLE7aWuaPU18R7wgH7wQMEXw-6bLAQsZSLY3Tb6Y2XEewvV-v4zgKBRRg7tG6Ju49U3K7ZmF_O86D0bhY5F1DH6K8Z1WUo37DqEctN5ex1R4eEDpmD3wRwI5Oz8fDA0lTynny19HIZgdoYSMFHt5VHLFTAznbq17TqTjIxYHyj8ElpniqvpDwTBZ9-NC6UoAU9iEVSfF-fdErK679G20YSD3G_jsLoq8iUWAPQTELZBc3pzCz_nMCX_dzFU7P4oXkAyFcV_2sc7oKmlXp0Km0agvRhGBezBISWSDNH2Vcgow",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
