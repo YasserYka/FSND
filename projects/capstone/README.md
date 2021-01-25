@@ -2,25 +2,127 @@
 
 # FSND Capstone
 
-Cars parking system, final project in Udacity Full Stack Web Develpment Nanodegree 
+Cars desposel system, final project in Udacity Full Stack Web Develpment Nanodegree 
 
-# Heroku
+# Motivation
 
-Base url is https://capstonefsndproject.herokuapp.com
+Cars disposal system is used to dispose old cars to be recycled. A person might come and ask to dispose mutiple cars. I developed this project to make use of the knowledge I acquired in the Nnaodegree program, to gain confidence in these skills.  
+
+# Deployment
+
+The app is hosted live on heroku at
+https://capstonefsndproject.herokuapp.com
+
 
 # Getting Started
 
-To run application locally, within the ./starter directory to install dependencies run
+## Clone repository
+
+To clone the repository, run
 
 ```
-pip install -r requirements.txt
+git clone https://github.com/YasserYka/FSND.git
 ```
 
-Then to run application, run
+## Python
+
+To install Python, follow instructions to intsall the latest version of python for your platform in [Python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
+
+## Key dependencies
+
+- [Flask] (https://palletsprojects.com/p/flask/) Backend framework
+
+- [SqlAlchemy] (https://www.sqlalchemy.org) Python SQL toolkit and ORM
+
+- [Flask-CORS] (https://flask-cors.readthedocs.io/en/latest/) Handle corss origin requests
+
+and other dependencies 
+
+Dependecies |
+--- |
+alembic	1.4.2 |
+click	7.1.2 |
+ecdsa	0.15 |
+Flask	1.1.2 |
+Flask-Cors	3.0.8 |
+Flask-Migrate	2.5.3 |
+Flask-Moment	0.10.0 |
+Flask-Script	2.0.6 |
+Flask-SQLAlchemy	2.4.4 |
+future	0.18.2 |
+gunicorn	20.0.4 |
+itsdangerous	1.1.0 |
+Jinja2	2.11.2 |
+jose	1.0.0 |
+Mako	1.1.3 |
+MarkupSafe	1.1.1 |
+psycopg2-binary	2.8.5 |
+pyasn1	0.4.8 |
+pycryptodome	3.3.1 |
+python-dateutil	2.8.1 |
+python-editor	1.0.4 |
+python-jose	3.1.0 |
+python-jose-cryptodome	1.3.2 |
+rsa	4.6 |
+six	1.15.0 |
+SQLAlchemy	1.3.18 |
+Werkzeug	1.0.1 |
+
+## Pip dependencies
+
+Navigate to starter folder, inside FSND folder run
+
+```
+cd /projects/capstone/starter
+```
+
+Setup virtual enviroment
+
+```
+python -m venv venv && venv/bin/activate
+```
+
+Install pip dependencies, run
+
+```
+pip3 install -r requirements.txt
+```
+
+Local database setup
+
+```
+flask db init
+flask db migrate -m "Init migration"
+flask db upgrade
+```
+
+Setup Environment variable, run
+
+```
+source setup.sh
+```
+
+# Local Testing
+
+To test you local installation, run
+
+```
+python3 test_app
+```
+
+If all tests pass, your installation is set up correctly
+
+# Run code
+
+To run the application locally, run
 
 ```
 python app.py
 ```
+
+Application can be found already running in
+
+https://capstonefsndproject.herokuapp.com
 
 # Roles
 
@@ -203,5 +305,18 @@ auth error 400|403|401
 {
     code: 'invalid_claims',
     description: 'Incorrect claims. Please, check the audience and issuer.'
+}
+```
+
+Not found 500
+- This error is showen when server faced an error
+- Returns: error code, status and a message
+
+500
+```
+{
+    'success': False,
+    'error': 500,
+    'message': 'Internal server error'
 }
 ```
