@@ -6,9 +6,11 @@ import json
 
 database_filename = "database.db"
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
+database_path = "sqlite:///{}".format(
+    os.path.join(project_dir, database_filename))
 
 db = SQLAlchemy()
+
 
 def setup_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
@@ -16,9 +18,11 @@ def setup_db(app):
     db.app = app
     db.init_app(app)
 
+
 def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
+
 
 class Car(db.Model):
     id = Column(Integer().with_variant(Integer, "sqlite"), primary_key=True)
@@ -27,7 +31,7 @@ class Car(db.Model):
 
     person_id = db.Column(db.Integer, db.ForeignKey('person.id'))
 
-    release =  Column(String(4), nullable=False)
+    release = Column(String(4), nullable=False)
 
     def json(self):
 
@@ -48,6 +52,7 @@ class Car(db.Model):
     def update(self):
         db.session.commit()
 
+
 class Person(db.Model):
     id = Column(Integer().with_variant(Integer, "sqlite"), primary_key=True)
 
@@ -55,7 +60,7 @@ class Person(db.Model):
 
     cars = db.relationship("Car", backref=db.backref('person', lazy=True))
 
-    age =  Column(Integer(), nullable=False)
+    age = Column(Integer(), nullable=False)
 
     def json(self):
 

@@ -1,9 +1,15 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import (
+    Flask,
+    request,
+    abort,
+    jsonify
+)
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import Car, Person, setup_db
 from auth.auth import AuthError, requires_auth
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -12,7 +18,6 @@ def create_app(test_config=None):
     setup_db(app)
 
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-
 
     def after_request(response):
         response.headers.add(
@@ -23,6 +28,10 @@ def create_app(test_config=None):
         )
         return response
 
+    @app.route('/', methods=['GET'])
+    def index():
+        return jsonify({'message': 'Welcome To My Car Disposal System API'})
+
     @app.route('/persons', methods=['GET'])
     @requires_auth('get:persons')
     def get_persons(token):
@@ -32,7 +41,10 @@ def create_app(test_config=None):
         if len(persons) == 0:
             abort(404)
 
-        return {'persons': [person.json() for person in persons], 'success': True}
+        return {
+            'persons': [
+                person.json() for person in persons],
+            'success': True}
 
     @app.route('/cars', methods=['GET'])
     @requires_auth('get:cars')
@@ -52,7 +64,9 @@ def create_app(test_config=None):
 
         body = request.get_json()
 
-        (color, release, person_name) = (body.get('color'), body.get('release'), body.get('person_name'))
+        (color, release, person_name) = (body.get('color'),
+                                         body.get('release'),
+                                         body.get('person_name'))
 
         person = Person.query.filter(Person.name == person_name).one_or_none()
 
@@ -60,13 +74,12 @@ def create_app(test_config=None):
             abort(422)
 
         car = Car(release=release, color=color)
-        
+
         person.cars.append(car)
 
         person.update()
 
         return {'cars': [car.json()], 'success': True}
-
 
     @app.route('/persons', methods=['POST'])
     @requires_auth('post:persons')
@@ -123,20 +136,26 @@ def create_app(test_config=None):
     @app.errorhandler(422)
     def unprocessable(error):
         return (jsonify({'success': False, 'error': 422,
-                'message': 'unprocessable'}), 422)
+                         'message': 'unprocessable'}), 422)
 
     @app.errorhandler(404)
     def not_found(error):
         return (jsonify({'success': False, 'error': 404,
-                'message': 'Resource not found'}), 404)
+                         'message': 'Resource not found'}), 404)
 
     @app.errorhandler(AuthError)
     def handle_auth_error(ex):
         response = jsonify(ex.error)
         response.status_code = ex.status_code
         return response
-    
+
+    @app.errorhandler(500)
+    def handle_server_error(error):
+        return (jsonify({'success': False, 'error': 500,
+                         'message': 'Internal server error'}), 500)
+
     return app
+
 
 APP = create_app()
 
